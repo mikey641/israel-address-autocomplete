@@ -1,0 +1,98 @@
+{
+  "name": "israel-address-autocomplete",
+  "version": "0.1.0",
+  "description": "Israeli city → street → house-number address autocomplete with zip codes, backed by the Israel Post (דואר ישראל) registry, plus GovMap geocoding. Framework-agnostic client, a fetch-standard proxy handler, and an optional React component.",
+  "keywords": [
+    "israel",
+    "address",
+    "autocomplete",
+    "cities",
+    "streets",
+    "zip",
+    "mikud",
+    "israel-post",
+    "govmap",
+    "geocoding",
+    "react",
+    "hebrew",
+    "כתובת",
+    "מיקוד"
+  ],
+  "license": "MIT",
+  "author": "Michael Hasson",
+  "homepage": "https://github.com/mikey641/israel-address-autocomplete#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikey641/israel-address-autocomplete.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mikey641/israel-address-autocomplete/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./react": {
+      "import": {
+        "types": "./dist/react.d.ts",
+        "default": "./dist/react.js"
+      },
+      "require": {
+        "types": "./dist/react.d.cts",
+        "default": "./dist/react.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:live": "ADDRESS_LIVE=1 vitest run test/live.test.ts",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build",
+    "demo": "tsx examples/demo/server.ts"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.3.0",
+    "esbuild": "^0.28.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.3.0",
+    "tsup": "^8.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
