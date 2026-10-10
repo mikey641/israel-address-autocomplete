@@ -31,7 +31,42 @@ There are no runtime dependencies. React is an optional peer dependency.
 ## Install
 
 ```sh
-npm install israel-address-autocomplete
+npm install github:mikey641/israel-address-autocomplete
+```
+
+The package installs straight from GitHub because it is not on the npm registry yet. npm builds
+`dist/` during the install through the `prepare` script.
+
+## Add it to your site with Claude
+
+Paste this prompt into [Claude Code](https://claude.com/claude-code), or any Claude session that
+can work in your repository, from your project's root. Claude installs the package, adds the
+server route, and swaps your address fields for the component.
+
+```text
+Add Israeli address autocomplete to my site using
+https://github.com/mikey641/israel-address-autocomplete. Read its README first.
+
+1. Install it with: npm install github:mikey641/israel-address-autocomplete
+2. Mount the proxy route. createAddressHandler() returns a fetch-standard
+   (Request) => Response handler. In Next.js App Router that is
+   app/api/address/route.ts containing `export const GET = createAddressHandler()`.
+   For other frameworks, adapt it as the README's "The HTTP handler" section
+   shows. Never call the Israel Post API from the browser; it sends no CORS headers.
+3. Find every form where users enter an Israeli address (city, street, house
+   number, zip). Replace those inputs with <AddressAutocomplete /> from
+   "israel-address-autocomplete/react", with `endpoint` pointing at the route.
+4. Keep my existing field names: map them with the `names` prop, or read the
+   structured value from `onChange` if the form is controlled. Pass saved
+   values back through `defaultValue` so edit forms keep them. Use
+   `{ address }` for records that only stored a single free-text line.
+5. Style it with my design system through the `classNames` prop instead of the
+   inline defaults. Keep `dir="rtl"` unless the form is in English.
+6. Run my typecheck and tests, then open the form in a browser: type a city,
+   pick it, pick a street, enter a house number, confirm the zip appears, and
+   confirm the form saves every field.
+
+Tell me which forms you changed and anything you could not wire up.
 ```
 
 ## Quick start (Next.js App Router)

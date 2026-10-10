@@ -73,7 +73,8 @@
     "test:watch": "vitest",
     "test:live": "ADDRESS_LIVE=1 vitest run test/live.test.ts",
     "prepublishOnly": "npm run typecheck && npm test && npm run build",
-    "demo": "tsx examples/demo/server.ts"
+    "demo": "tsx examples/demo/server.ts",
+    "prepare": "tsup"
   },
   "peerDependencies": {
     "react": ">=18"
